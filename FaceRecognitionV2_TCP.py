@@ -26,7 +26,7 @@ try:
     known_face_encodings.append(known_encoding)
     known_face_names.append("Weerasit")
 except IndexError:
-    print("❌ ไม่สามารถสร้าง encoding จาก weerasit.jpg ได้")
+    print("ไม่สามารถสร้าง encoding จาก weerasit.jpg ได้")
 
 # === โหลดใบหน้า: Aphisit ===
 try:
@@ -35,10 +35,10 @@ try:
     known_face_encodings.append(aphisit_encoding)
     known_face_names.append("Aphisit")
 except IndexError:
-    print("❌ ไม่สามารถสร้าง encoding จาก Aphisit.jpg ได้")
+    print("ไม่สามารถสร้าง encoding จาก Aphisit.jpg ได้")
 
 if not known_face_encodings:
-    print("❌ ไม่มีใบหน้าใดที่โหลดได้เลย")
+    print("ไม่มีใบหน้าใดที่โหลดได้เลย")
     exit()
 
 # ===== เริ่มกล้อง =====
@@ -63,7 +63,7 @@ while True:
             try:
                 encodings = face.face_encodings(rgb_small_frame, face_locations)
             except Exception as e:
-                print("❌ Encoding error:", e)
+                print("Encoding error:", e)
                 encodings = []
 
             for face_encoding in encodings:
@@ -84,9 +84,9 @@ while True:
                 # ===== ส่งชื่อทุกชื่อที่ตรวจพบ (รวม UNKNOWN) =====
                 try:
                     client_socket.sendall(name.encode())
-                    print(f"📤 ส่งชื่อ: {name}")
+                    print(f"ส่งชื่อ: {name}")
                 except Exception as e:
-                    print(f"❌ ส่งชื่อไม่สำเร็จ: {e}")
+                    print(f"ส่งชื่อไม่สำเร็จ: {e}")
                 else:
                     name = "UNKNOWN"
                     percent = 0.0
